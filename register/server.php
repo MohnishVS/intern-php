@@ -8,6 +8,15 @@
 		$email =  $_POST['email'];
 		$password = $_POST['password'];
 		$conf_password = $_POST['confirm_password'];
+	  
+		if($username == '' || $email == '' || $password == '' || $conf_password == ''){
+            $isValid = false;
+			$error_message = "Please fill all fields.";
+		}	
+		if ($password != $conf_password) {
+				$isValid=false;
+				$error_message="The two passwords do not match";
+		}
 		
 			$user_check_query = "SELECT * FROM user WHERE username='$username' OR email='$email' limit 1";
 			if($stmt = $pdo->prepare($user_check_query)){
@@ -53,7 +62,7 @@
 					$param_password = $password;
 					
 					if($stmt->execute()){
-						$success_message="Account Created Successfully";
+                        $success_message="Account Created Successfully";
 					} 
 					else{
 						$error_message = "Something went wrong. Please try again later.";
