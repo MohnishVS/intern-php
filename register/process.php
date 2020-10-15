@@ -1,9 +1,5 @@
 <?php 
-  $db = mysqli_connect('localhost', 'root', '', 'register_db');
-  if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-  }
+  include('config.php');
   if (isset($_POST['username_check'])) {
   	$username = $_POST['username'];
   	$sql = "SELECT * FROM user WHERE username='$username'";
