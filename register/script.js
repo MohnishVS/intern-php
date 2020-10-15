@@ -87,10 +87,10 @@ $('document').ready(function(){
                  'password' : password,
              },
              success: function(response){
-                 alert('user saved');
-                 $('#username').val('');
-                 $('#email').val('');
-                 $('#password').val('');
+                 alert('user saved'); 
+             },
+             error: function(response){
+                 alert('error occured');
              }
          });
         }
