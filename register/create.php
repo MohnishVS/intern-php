@@ -21,7 +21,8 @@
 					<div class="form-group">
 						<label for="Username">Username:</label><br />
 						<input type="text" name="username" id="username" class="form-control" required minlength=4 maxlength=8
-							placeholder="username"><br /><div  id="message1"></div>
+							placeholder="username"><br />
+						<div  id="message1"></div>
 					</div>
 					<div class="form-group">
 						<label for="email">Email:</label><br />
@@ -42,7 +43,7 @@
 					<div class="form-group">
 						<input type="submit" name="register_btn" id="reg_btn" class="btn btn-primary" value="register"><br />
 					</div>
-
+         			<div id="error_msg"></div>
 				</form>
 			</div>
 		</div>

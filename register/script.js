@@ -29,12 +29,12 @@ $('document').ready(function(){
        success: function(response){
          if (response == 'taken' ) {
              username_state = false;
-             document.getElementById('message').style.color = 'green';
+             document.getElementById('message').style.color = 'red';
              document.getElementById('message1').innerHTML = 'username already exists';;
          }
          else if (response == 'not_taken') {
              username_state = true;
-             document.getElementById('message').style.color = 'red';
+             document.getElementById('message').style.color = 'green';
              document.getElementById('message1').innerHTML = 'username available';
          }
        }
@@ -57,12 +57,12 @@ $('document').ready(function(){
          success: function(response){
              if (response == 'taken' ) {
              email_state = false;
-             document.getElementById('message').style.color = 'green';
+             document.getElementById('message').style.color = 'red';
              document.getElementById('message2').innerHTML = 'email already exists';
              }
              else if (response == 'not_taken') {
                email_state = true;
-               document.getElementById('message').style.color = 'red';
+               document.getElementById('message').style.color = 'green';
                document.getElementById('message2').innerHTML = 'welcome new user';
              }
          }
@@ -75,8 +75,8 @@ $('document').ready(function(){
         var password = $('#password').val();
         if (username_state == false || email_state == false) {
          $('#error_msg').text('Fix the errors in the form first');
-       }else{
-         // proceed with form submission
+       }
+       else{
          $.ajax({
              url: 'process.php',
              type: 'post',
