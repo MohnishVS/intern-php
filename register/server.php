@@ -1,7 +1,5 @@
 <?php
-    include("config.php");
-	$isValid=true;
-	$error_message=""; 
+	include("config.php");
 
 	if (isset($_POST['register_btn'])) {
 		$username =  $_POST['username'];
@@ -10,12 +8,10 @@
 		$conf_password = $_POST['confirm_password'];
 	  
 		if($username == '' || $email == '' || $password == '' || $conf_password == ''){
-            $isValid = false;
-			$error_message = "Please fill all fields.";
+			echo "Please fill all fields.";
 		}	
 		if ($password != $conf_password) {
-				$isValid=false;
-				$error_message="The two passwords do not match";
+				echo "The two passwords do not match";
 		}
 		
 			$user_check_query = "SELECT * FROM user WHERE username='$username' OR email='$email' limit 1";
@@ -32,23 +28,34 @@
 					
 						$username1 = $row["username"];
 						$email1 = $row["email"];
-					
-					if ($username1 == $username) {
-						$isValid=false;
-						$error_message= "Username already exists";
-						
-					}
-				
-					if ($email1 == $email) {
-						$isValid=false;
-						$error_message= "email already exists";
-						
-					}
-				}
+
+						if (isset($_POST['email_check'])){
+							$username =  $_POST['username'];
+							if ($username1 == $username) {
+								echo("taken");
+							}
+							else{
+								echo("not_taken");
+							}
+						}
+						if (isset($_POST['email_check'])){
+							$email =  $_POST['email'];
+							if ($email1 == $email) {
+								echo("taken");	
+							}
+							else{
+								echo("not_taken");
+							}
+						}
+						}
 				}
 			}
+	}
 		
-		if ($isValid) {
+	if (isset($_POST['save'])) {
+			$username =  $_POST['username'];
+			$email =  $_POST['email'];
+			$password = $_POST['password'];
 			$sql = "INSERT INTO user (username, email, password) VALUES (:username, :email, :password)";
 		 
 				if($stmt = $pdo->prepare($sql)){
@@ -62,15 +69,13 @@
 					$param_password = $password;
 					
 					if($stmt->execute()){
-                        $success_message="Account Created Successfully";
+						$success_message="Account Created Successfully";
+						echo($success_message);
 					} 
 					else{
-						$error_message = "Something went wrong. Please try again later.";
+						echo "Something went wrong. Please try again later.";
 					}
 				}
 			}
-			else{
-                $error_message="it is invalid";
-			}
-        }
+
 ?>
