@@ -87,10 +87,17 @@ $('document').ready(function(){
                  'password' : password,
              },
              success: function(response){
+<<<<<<< HEAD
+                 alert('user saved'); 
+             },
+             error: function(response){
+                 alert('error occured');
+=======
                  alert('user saved');
                  $('#username').val('');
                  $('#email').val('');
                  $('#password').val('');
+>>>>>>> 5b1283a7659dfe0657c955d71928c59667b1fabe
              }
          });
         }
