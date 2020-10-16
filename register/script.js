@@ -29,12 +29,12 @@ $('document').ready(function(){
        success: function(response){
          if (response == 'taken' ) {
              username_state = false;
-             document.getElementById('message').style.color = 'red';
+             document.getElementById('message1').style.color = 'red';
              document.getElementById('message1').innerHTML = 'username already exists';;
          }
          else if (response == 'not_taken') {
              username_state = true;
-             document.getElementById('message').style.color = 'green';
+             document.getElementById('message1').style.color = 'green';
              document.getElementById('message1').innerHTML = 'username available';
          }
        }
@@ -57,12 +57,12 @@ $('document').ready(function(){
          success: function(response){
              if (response == 'taken' ) {
              email_state = false;
-             document.getElementById('message').style.color = 'red';
+             document.getElementById('message2').style.color = 'red';
              document.getElementById('message2').innerHTML = 'email already exists';
              }
              else if (response == 'not_taken') {
                email_state = true;
-               document.getElementById('message').style.color = 'green';
+               document.getElementById('message2').style.color = 'green';
                document.getElementById('message2').innerHTML = 'welcome new user';
              }
          }
@@ -88,10 +88,6 @@ $('document').ready(function(){
              },
              success: function(response){
                  alert('user saved'); 
-             },
-             error: function(response){
-                 alert('error occured');
-
              }
          });
         }
