@@ -88,6 +88,10 @@ $('document').ready(function(){
              },
              success: function(response){
                  alert('user saved'); 
+             },
+             error: function(data){
+                 console.log(data);
+
              }
          });
         }
