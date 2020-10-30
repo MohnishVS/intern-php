@@ -16,17 +16,17 @@
 		<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-left form pt-4 my-8">
 			<h2 class="display-4">Register</h2>
 			<div class="form-group">
-				<form method="POST" class="registerform">
+				<form method="POST" action="create.php" class="registerform">
 					
 					<div class="form-group">
 						<label for="Username">Username:</label><br />
-						<input type="text" name="username" id="username" class="form-control" required minlength=4 maxlength=8
+						<input type="text" name="username" id="username" autocomplete="username" class="form-control" onkeyup='usercheck();' required minlength=4 maxlength=8
 							placeholder="username"><br />
 						<div  id="message1"></div>
 					</div>
 					<div class="form-group">
 						<label for="email">Email:</label><br />
-						<input type="text" name="email" id="email" class="form-control" required placeholder="Email"><br />
+						<input type="text" name="email" id="email" class="form-control" onkeyup='emailcheck();' required placeholder="Email"><br />
 						<div  id="message2"></div>
 					</div>
 					<div class="form-group">
@@ -41,7 +41,7 @@
 						<div  id="message"></div>
 					</div>
 					<div class="form-group">
-						<input type="submit" name="register_btn" id="reg_btn" class="btn btn-primary" value="register"><br />
+						<input type="submit" name="register_btn" id="reg_btn" class="btn btn-primary" onclick='save();' value="register"><br />
 					</div>
          			<div id="error_msg"></div>
 				</form>

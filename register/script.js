@@ -9,67 +9,63 @@ var check = function() {
     }
 };
 
-$('document').ready(function(){
-    var username_state = false;
-    var email_state = false;
-    
-    $('#username').on('blur', function(){
-     var username = $('#username').val();
-     if (username == '') {
-         username_state = false;
-         return;
-     }
-     $.ajax({
-       url: 'process.php',
-       type: 'post',
-       data: {
-           'username_check' : 1,
-           'username' : username,
-       },
-       success: function(response){
+var usercheck = function(){
+    var username = $('#username').val();
+    if (username == '') {
+        username_state = false;
+        return;
+    }
+    $.ajax({
+      url: 'process.php',
+      type: 'post',
+      data: {
+          'username_check' : 1,
+          'username' : username,
+      },
+      success: function(response){
+        if (response == 'taken' ) {
+            username_state = false;
+            document.getElementById('message1').style.color = 'red';
+            document.getElementById('message1').innerHTML = 'username already exists';;
+        }
+        else if (response == 'not_taken') {
+            username_state = true;
+            document.getElementById('message1').style.color = 'green';
+            document.getElementById('message1').innerHTML = 'username available';
+        }
+      }
+    });
+   };
+
+var emailcheck = function(){
+    var email = $('#email').val();
+    if (email == '') {
+        email_state = false;
+        return;
+    }
+    $.ajax({
+     url: 'process.php',
+     type: 'post',
+     data: {
+         'email_check' : 1,
+         'email' : email,
+     },
+     success: function(response){
          if (response == 'taken' ) {
-             username_state = false;
-             document.getElementById('message1').style.color = 'red';
-             document.getElementById('message1').innerHTML = 'username already exists';;
+         email_state = false;
+         document.getElementById('message2').style.color = 'red';
+         document.getElementById('message2').innerHTML = 'email already exists';
          }
          else if (response == 'not_taken') {
-             username_state = true;
-             document.getElementById('message1').style.color = 'green';
-             document.getElementById('message1').innerHTML = 'username available';
+           email_state = true;
+           document.getElementById('message2').style.color = 'green';
+           document.getElementById('message2').innerHTML = 'welcome new user';
          }
-       }
-     });
+     }
     });
+};
 
-    $('#email').on('blur', function(){
-        var email = $('#email').val();
-        if (email == '') {
-            email_state = false;
-            return;
-        }
-        $.ajax({
-         url: 'process.php',
-         type: 'post',
-         data: {
-             'email_check' : 1,
-             'email' : email,
-         },
-         success: function(response){
-             if (response == 'taken' ) {
-             email_state = false;
-             document.getElementById('message2').style.color = 'red';
-             document.getElementById('message2').innerHTML = 'email already exists';
-             }
-             else if (response == 'not_taken') {
-               email_state = true;
-               document.getElementById('message2').style.color = 'green';
-               document.getElementById('message2').innerHTML = 'welcome new user';
-             }
-         }
-        });
-    });
-
-    $('#reg_btn').on('click', function(){
+var save = function(){
         var username = $('#username').val();
         var email = $('#email').val();
         var password = $('#password').val();
@@ -87,7 +83,7 @@ $('document').ready(function(){
                  'password' : password,
              },
              success: function(response){
-                 alert('user saved'); 
+                 alert('user saved');
              },
              error: function(data){
                  console.log(data);
@@ -95,6 +91,4 @@ $('document').ready(function(){
              }
          });
         }
-    });
-
-   });
+};

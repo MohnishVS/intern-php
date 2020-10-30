@@ -33,7 +33,7 @@
   	$email = $_POST['email'];
   	$password = $_POST['password'];
 	  
-	$sql = "SELECT * FROM users WHERE username='$username'";
+	$sql = "SELECT * FROM user WHERE username='$username'";
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
 
