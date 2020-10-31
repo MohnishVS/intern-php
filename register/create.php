@@ -1,5 +1,6 @@
 <?php include('process.php'); ?>
 <html>
+
 <head>
 	<title>Register Page</title>
 	<meta charset="utf-8">
@@ -17,33 +18,35 @@
 			<h2 class="display-4">Register</h2>
 			<div class="form-group">
 				<form method="POST" action="create.php" class="registerform">
-					
+
 					<div class="form-group">
 						<label for="Username">Username:</label><br />
-						<input type="text" name="username" id="username" autocomplete="username" class="form-control" onkeyup='usercheck();' required minlength=4 maxlength=8
-							placeholder="username"><br />
-						<div  id="message1"></div>
+						<input type="text" name="username" id="username" autocomplete="username" class="form-control"
+							onkeyup='usercheck();' required minlength=4 maxlength=8 placeholder="username"><br />
+						<div id="message1"></div>
 					</div>
 					<div class="form-group">
 						<label for="email">Email:</label><br />
-						<input type="text" name="email" id="email" class="form-control" onkeyup='emailcheck();' required placeholder="Email"><br />
-						<div  id="message2"></div>
+						<input type="text" name="email" id="email" class="form-control" onkeyup='emailcheck();' required
+							placeholder="Email"><br />
+						<div id="message2"></div>
 					</div>
 					<div class="form-group">
 						<label for="Password">Password:</label><br />
-						<input type="password" name="password" class="form-control" id="password" required minlength=4 maxlength=8
-							placeholder="********"><br />
+						<input type="password" name="password" class="form-control" id="password" required minlength=4
+							maxlength=8 placeholder="********"><br />
 					</div>
 					<div class="form-group">
 						<label for="Confirm Password">Confirm Password:</label><br />
-						<input type="password" name="confirm_password" class="form-control" id="confirm_password" onkeyup='check();' required minlength=4 maxlength=8
-							placeholder="********"><br />
-						<div  id="message"></div>
+						<input type="password" name="confirm_password" class="form-control" id="confirm_password"
+							onkeyup='check();' required minlength=4 maxlength=8 placeholder="********"><br />
+						<div id="message"></div>
 					</div>
 					<div class="form-group">
-						<input type="submit" name="register_btn" id="reg_btn" class="btn btn-primary" onclick='save();' value="register"><br />
+						<input type="submit" name="register_btn" id="reg_btn" class="btn btn-primary" onclick='save();'
+							value="register"><br />
 					</div>
-         			<div id="error_msg"></div>
+					<div id="error_msg"></div>
 				</form>
 			</div>
 		</div>
