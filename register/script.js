@@ -25,7 +25,8 @@ var usercheck = function () {
             if (response == 'taken') {
                 username_state = false;
                 document.getElementById('message1').style.color = 'red';
-                document.getElementById('message1').innerHTML = 'username already exists';;
+                document.getElementById('message1').innerHTML = 'username already exists';
+                document.getElementById('user').value = username;
             } else if (response == 'not_taken') {
                 username_state = true;
                 document.getElementById('message1').style.color = 'green';
