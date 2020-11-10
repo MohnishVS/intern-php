@@ -1,26 +1,5 @@
 <?php include('process.php'); 
 
-	if (isset($_FILES["file"]["name"])) {
-		$username = $_POST['user'];
-		$name = $_FILES["file"]["name"];
-		$tmp_name = $_FILES["file"]["tmp_name"];
-		
-		if (!empty($name)) {
-			$location = 'uploads/';
-	
-			if (move_uploaded_file($tmp_name, $location.$name)){
-				$name=htmlspecialchars($name, ENT_QUOTES);
-				$query="UPDATE user SET resumefile ='$name' WHERE username = '$username'";
-				$stmt=$db->prepare($query);
-				$stmt->execute();
-			 	echo "uploaded";
-		}
-			else{
-			  echo 'failed';
-			}
-	
-		}
-	}
 
 ?>
 <html>
@@ -67,7 +46,7 @@
 						<div id="message"></div>
 					</div>
 				</form>
-					<form action="create.php" method="POST" enctype="multipart/form-data">
+					<form id="uploadform" action="" method="POST" enctype="multipart/form-data">
 						<div class="">
 							<input type="hidden" name="user" id="user" value="">
 							<input type="file"  name="file" id="file" onchange="user();"><br><br>
@@ -80,10 +59,11 @@
 	</div>
 <script>
 		var user = function() {
-			document.getElementById('user').value="monishce";
+			var username = $('username').val()
+			document.getElementById('user').value=username;
 		}
 
-	</script>
+</script>
 </body>
 
 </html>

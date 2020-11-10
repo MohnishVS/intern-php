@@ -64,7 +64,6 @@ var emailcheck = function () {
 };
 
 
-
 var save = function () {
     var username = $('#username').val();
     var email = $('#email').val();

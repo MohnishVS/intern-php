@@ -55,20 +55,27 @@
   	}
   }
 
-  if(isset($_POST['resup'])){
-  try{
-	include_once("config.php");
-	$name = $_POST['filename'];
-	$username=$_POST['username'];
-	$name=htmlspecialchars($name, ENT_QUOTES);
-	$query="UPDATE user SET resumefile ='$name' WHERE username = '$username'";
-	$stmt=$db->prepare($query);
-	$stmt->execute();
-	echo $username;
-   }
-   catch(PDOException $e) {
-	  echo $e->getMessage();
-  }
+
+  if (isset($_FILES["file"]["name"])) {
+	$username = $_POST['user'];
+	$name = $_FILES["file"]["name"];
+	$tmp_name = $_FILES["file"]["tmp_name"];
+	$file_type = $_FILES["file"]["type"];
+	$file_size = $_FILES["file"]["size"];
+	if (!empty($name) && ($file_type="pdf") && $file_size<=500000) {
+		$location = 'uploads/';
+		if (move_uploaded_file($tmp_name, $location.$name)){
+			$name=htmlspecialchars($name, ENT_QUOTES);
+			$query="UPDATE user SET resumefile ='$name' WHERE username = '$username'";
+			$stmt=$db->prepare($query);
+			$stmt->execute();
+			 echo "uploaded";
+	}
+		else{
+		  echo 'failed';
+		}
+
+	}
 }
 
 ?>
