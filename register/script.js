@@ -30,6 +30,7 @@ var usercheck = function () {
                 username_state = true;
                 document.getElementById('message1').style.color = 'green';
                 document.getElementById('message1').innerHTML = 'username available';
+                document.getElementById('user').value = username;
             }
         }
     });
@@ -62,6 +63,8 @@ var emailcheck = function () {
     });
 };
 
+
+
 var save = function () {
     var username = $('#username').val();
     var email = $('#email').val();
@@ -79,12 +82,16 @@ var save = function () {
                 'password': password,
             },
             success: function (response) {
-                alert('user saved');
-            },
-            error: function (data) {
-                console.log(data);
-
+                if(response == 'success'){
+                    console.log('user saved');
+                    document.getElementById('user').innerHTML = username;
+                }
+                else{
+                    console.log(response);
+                }
+               
             }
         });
     }
 };
+

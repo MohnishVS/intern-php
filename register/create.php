@@ -1,9 +1,33 @@
-<?php include('process.php'); ?>
+<?php include('process.php'); 
+
+	if (isset($_FILES["file"]["name"])) {
+		$username = $_POST['user'];
+		$name = $_FILES["file"]["name"];
+		$tmp_name = $_FILES["file"]["tmp_name"];
+		
+		if (!empty($name)) {
+			$location = 'uploads/';
+	
+			if (move_uploaded_file($tmp_name, $location.$name)){
+				$name=htmlspecialchars($name, ENT_QUOTES);
+				$query="UPDATE user SET resumefile ='$name' WHERE username = '$username'";
+				$stmt=$db->prepare($query);
+				$stmt->execute();
+			 	echo "uploaded";
+		}
+			else{
+			  echo 'failed';
+			}
+	
+		}
+	}
+
+?>
 <html>
 
 <head>
 	<title>Register Page</title>
-	<meta charset="utf-8">
+<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +41,7 @@
 		<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-left form pt-4 my-8">
 			<h2 class="display-4">Register</h2>
 			<div class="form-group">
-				<form method="POST" action="create.php" class="registerform">
+				<form>
 
 					<div class="form-group">
 						<label for="Username">Username:</label><br />
@@ -27,7 +51,7 @@
 					</div>
 					<div class="form-group">
 						<label for="email">Email:</label><br />
-						<input type="text" name="email" id="email" class="form-control" onkeyup='emailcheck();' required
+						<input type="text" name="email" id="email" class="form-control" onkeyup='emailcheck();'  required
 							placeholder="Email"><br />
 						<div id="message2"></div>
 					</div>
@@ -39,18 +63,27 @@
 					<div class="form-group">
 						<label for="Confirm Password">Confirm Password:</label><br />
 						<input type="password" name="confirm_password" class="form-control" id="confirm_password"
-							onkeyup='check();' required minlength=4 maxlength=8 placeholder="********"><br />
+							onkeyup='check();' onchange="save();" required minlength=4 maxlength=8 placeholder="********"><br />
 						<div id="message"></div>
 					</div>
-					<div class="form-group">
-						<input type="submit" name="register_btn" id="reg_btn" class="btn btn-primary" onclick='save();'
-							value="register"><br />
-					</div>
-					<div id="error_msg"></div>
 				</form>
+					<form action="create.php" method="POST" enctype="multipart/form-data">
+						<div class="">
+							<input type="hidden" name="user" id="user" value="">
+							<input type="file"  name="file" id="file" onchange="user();"><br><br>
+							<input type="submit" class="btn btn-outline-secondary" value="Upload Resume" >
+						</div>
+						<div id="messageres"></div><br><br><br><br>
+					<form>
 			</div>
 		</div>
 	</div>
+<script>
+		var user = function() {
+			document.getElementById('user').value="monishce";
+		}
+
+	</script>
 </body>
 
 </html>

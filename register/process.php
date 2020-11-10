@@ -26,12 +26,12 @@
   	}
   	exit();
   }
-  
+
   
   if (isset($_POST['save'])) {
   	$username = $_POST['username'];
   	$email = $_POST['email'];
-  	$password = $_POST['password'];
+	$password = $_POST['password'];
 	  
 	$sql = "SELECT * FROM user WHERE username='$username'";
 	$stmt = $db->prepare($sql);
@@ -43,21 +43,32 @@
     }
     else{
 		try {
-			$sql = "INSERT INTO user (username, email, password) VALUES (:username, :email, :password)";
+			$sql = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')";
 			$stmt = $db->prepare($sql);
-			$stmt->bindParam(":username", $param_username);
-			$stmt->bindParam(":email", $param_email);
-			$stmt->bindParam(":password", $param_password);
-					
-			$param_username = $username;
-			$param_email = $email;
-			$param_password = $password;
 			$stmt->execute();
+			echo "success";
+	
 		} 
 		catch(PDOException $e) {
 			echo $sql . "<br>" . $e->getMessage();
 		}
   	}
   }
+
+  if(isset($_POST['resup'])){
+  try{
+	include_once("config.php");
+	$name = $_POST['filename'];
+	$username=$_POST['username'];
+	$name=htmlspecialchars($name, ENT_QUOTES);
+	$query="UPDATE user SET resumefile ='$name' WHERE username = '$username'";
+	$stmt=$db->prepare($query);
+	$stmt->execute();
+	echo $username;
+   }
+   catch(PDOException $e) {
+	  echo $e->getMessage();
+  }
+}
 
 ?>
