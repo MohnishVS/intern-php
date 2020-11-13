@@ -35,7 +35,7 @@
 			$file_size = $_FILES['file']['size'];
 			if ((!empty($name) && ($file_type=="application/pdf") && $file_size<=5000000)) {
 				$location = 'uploads/';
-				if (move_uploaded_file($tmp_name, $location.$name)){
+				if (move_uploaded_file($tmp_name, $location.$username.$name)){
 				  $name=htmlspecialchars($name, ENT_QUOTES);
 				  $query="UPDATE user SET resumefile = '$name'  WHERE username = '$username'";
 				  $stmt=$db->prepare($query);
@@ -47,7 +47,7 @@
 				}
 		
 			} else {
-				echo $username,$name,$file_size,$file_type;
+				echo $tmp_name;
 				echo 'select file .pdf and size below 5MB';
 			}
 		}

@@ -25,12 +25,12 @@ var usercheck = function () {
             if (response == 'taken') {
                 username_state = false;
                 document.getElementById('message1').style.color = 'red';
-                document.getElementById('message1').innerHTML = 'username already exists';
+                document.getElementById('message1').innerHTML = 'Username already exists';
                 document.getElementById('user').value = username;
             } else if (response == 'not_taken') {
                 username_state = true;
                 document.getElementById('message1').style.color = 'green';
-                document.getElementById('message1').innerHTML = 'username available';
+                document.getElementById('message1').innerHTML = 'Username available';
                 document.getElementById('user').value = username;
             }
         }
@@ -54,11 +54,11 @@ var emailcheck = function () {
             if (response == 'taken') {
                 email_state = false;
                 document.getElementById('message2').style.color = 'red';
-                document.getElementById('message2').innerHTML = 'email already exists';
+                document.getElementById('message2').innerHTML = 'Email already exists';
             } else if (response == 'not_taken') {
                 email_state = true;
                 document.getElementById('message2').style.color = 'green';
-                document.getElementById('message2').innerHTML = 'welcome new user';
+                document.getElementById('message2').innerHTML = 'Welcome new user';
             }
         }
     });
@@ -83,11 +83,11 @@ var save = function () {
             },
             success: function (response) {
                 if(response == 'success'){
-                    console.log('user saved');
+                    document.getElementById('messageuser').innerHTML="User Registered";
                     document.getElementById('user').innerHTML = username;
                 }
                 else{
-                    console.log(response);
+                    document.getElementById('messageuser').innerHTML="Registration Failed";
                 }
                
             }
@@ -113,7 +113,10 @@ var resup = function () {
         processData: false,
         success: function(data){
             if(data == "Uploaded"){
-                console.log("upload success")
+                document.getElementById('messageres').innerHTML="Upload Success";
+            }
+            else{
+                document.getElementById('messageres').innerHTML=data;
             }
         },
         error: function(jqXHR,status,error){

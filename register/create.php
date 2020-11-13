@@ -1,6 +1,4 @@
 <?php include('process.php'); 
-
-
 ?>
 <html>
 
@@ -44,16 +42,14 @@
 						<input type="password" name="confirm_password" class="form-control" id="confirm_password"
 							onkeyup='check();' onchange="save();" required minlength=4 maxlength=8 placeholder="********"><br />
 						<div id="message"></div>
+						<div id="messageuser"></div>
 					</div>
 				</form>
-					
 						<div class="">
 							<input type="hidden" name="user" id="user" value="">
-							<input type="file"  name="file" id="file" onchange="resup();" ><br><br>
-							
+							<input type="file"  name="file" id="file" onchange="resup();" ><br><br>	
 						</div>
-						<div id="messageres"></div><br><br><br><br>
-					
+						<div id="messageres"></div><br>
 			</div>
 		</div>
 	</div>
