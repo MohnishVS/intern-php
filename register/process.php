@@ -27,7 +27,31 @@
   	exit();
   }
 
-  
+		if (isset($_FILES['file']['name'])) {
+			$username = $_POST['user'];
+			$name = $_FILES['file']['name'];
+			$tmp_name = $_FILES['file']['tmp_name'];
+			$file_type = $_FILES['file']['type'];
+			$file_size = $_FILES['file']['size'];
+			if ((!empty($name) && ($file_type=="application/pdf") && $file_size<=5000000)) {
+				$location = 'uploads/';
+				if (move_uploaded_file($tmp_name, $location.$name)){
+				  $name=htmlspecialchars($name, ENT_QUOTES);
+				  $query="UPDATE user SET resumefile = '$name'  WHERE username = '$username'";
+				  $stmt=$db->prepare($query);
+				  $stmt->execute();
+				  echo 'Uploaded';
+				}
+				else {
+				  echo 'failed';
+				}
+		
+			} else {
+				echo $username,$name,$file_size,$file_type;
+				echo 'select file .pdf and size below 5MB';
+			}
+		}
+
   if (isset($_POST['save'])) {
   	$username = $_POST['username'];
   	$email = $_POST['email'];
@@ -54,28 +78,4 @@
 		}
   	}
   }
-
-
-  if (isset($_FILES["file"]["name"])) {
-	$username = $_POST['user'];
-	$name = $_FILES["file"]["name"];
-	$tmp_name = $_FILES["file"]["tmp_name"];
-	$file_type = $_FILES["file"]["type"];
-	$file_size = $_FILES["file"]["size"];
-	if (!empty($name) && ($file_type="pdf") && $file_size<=500000) {
-		$location = 'uploads/';
-		if (move_uploaded_file($tmp_name, $location.$name)){
-			$name=htmlspecialchars($name, ENT_QUOTES);
-			$query="UPDATE user SET resumefile ='$name' WHERE username = '$username'";
-			$stmt=$db->prepare($query);
-			$stmt->execute();
-			 echo "uploaded";
-	}
-		else{
-		  echo 'failed';
-		}
-
-	}
-}
-
 ?>

@@ -46,14 +46,14 @@
 						<div id="message"></div>
 					</div>
 				</form>
-					<form id="uploadform" action="" method="POST" enctype="multipart/form-data">
+					
 						<div class="">
 							<input type="hidden" name="user" id="user" value="">
-							<input type="file"  name="file" id="file" ><br><br>
-							<input type="submit" class="btn btn-outline-secondary" value="Upload Resume" >
+							<input type="file"  name="file" id="file" onchange="resup();" ><br><br>
+							
 						</div>
 						<div id="messageres"></div><br><br><br><br>
-					<form>
+					
 			</div>
 		</div>
 	</div>

@@ -74,7 +74,7 @@ var save = function () {
     } else {
         $.ajax({
             url: 'process.php',
-            type: 'post',
+            type: 'POST',
             data: {
                 'save': 1,
                 'email': email,
@@ -93,5 +93,35 @@ var save = function () {
             }
         });
     }
+};
+
+
+
+var resup = function () {
+    var jform = new FormData();
+    jform.append('user',$('#user').val());
+    jform.append('file',$('#file').get(0).files[0]); // Here's the important bit
+
+    $.ajax({
+        url: 'process.php',
+        type: 'POST',
+        data: jform,
+        dataType: 'text',
+        mimeType: 'multipart/form-data', // this too
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data){
+            if(data == "Uploaded"){
+                console.log("upload success")
+            }
+        },
+        error: function(jqXHR,status,error){
+            // Hopefully we should never reach here
+            console.log(jqXHR);
+            console.log(status);
+            console.log(error);
+        }
+    });
 };
 
