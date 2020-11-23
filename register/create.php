@@ -28,7 +28,7 @@
 					</div>
 					<div class="form-group">
 						<label for="email">Email:</label><br />
-						<input type="text" name="email" id="email" class="form-control" onkeyup='emailcheck();'  required
+						<input type="email" name="email" id="email" class="form-control" pattern=".+@+." onkeyup='emailcheck();'  required
 							placeholder="Email"><br />
 						<div id="message2"></div>
 					</div>

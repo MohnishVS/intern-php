@@ -33,7 +33,7 @@
 			$tmp_name = $_FILES['file']['tmp_name'];
 			$file_type = $_FILES['file']['type'];
 			$file_size = $_FILES['file']['size'];
-			if ((!empty($name) && ($file_type=="application/pdf") && $file_size<=5000000)) {
+			if ((!empty($name)) && ($file_type=="application/pdf") && ($file_size<=5000000)) {
 				$location = 'uploads/';
 				if (move_uploaded_file($tmp_name, $location.$username.$name)){
 				  $name=htmlspecialchars($name, ENT_QUOTES);
