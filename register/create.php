@@ -14,8 +14,8 @@
 </head>
 
 <body>
-	<div class="container-fluid pt-3 my-3 border bg-dark text-white">
-		<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-left form pt-4 my-8">
+	<div class="card-body rounded pt-4 my-4 border bg-primary text-white">
+		<div class="card col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-left form pt-4 my-4 bg-dark text-white">
 			<h2 class="display-4">Register</h2>
 			<div class="form-group">
 				<form>
@@ -50,6 +50,7 @@
 							<input type="file"  name="file" id="file" onchange="resup();" ><br><br>	
 						</div>
 						<div id="messageres"></div><br>
+						<button onclick="location.href = '/intern-php/register/login.php';" id="createbtn" class="btn btn-info" >Login Page</button>
 			</div>
 		</div>
 	</div>

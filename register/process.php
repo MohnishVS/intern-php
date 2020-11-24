@@ -78,4 +78,26 @@
 		}
   	}
   }
+
+  if (isset($_POST['loginbtn'])) {
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	
+	$sql = "SELECT * FROM user WHERE username='$username' and password = '$password'";
+	$stmt = $db->prepare($sql);
+	$stmt->execute();
+
+	if ($stmt->rowcount() > 0) {
+	  session_start();
+	  $_SESSION["name"] = $username;
+	  if(isset($_SESSION["name"])) {
+		header("Location:index.php");
+		}
+	  echo "logged";	
+	  exit();
+	}
+	else{
+		echo "failed";
+		}
+  }
 ?>
