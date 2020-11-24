@@ -127,34 +127,3 @@ var resup = function () {
         }
     });
 };
-
-var userlogin = function () {
-    var username = $('#username').val();
-    var password = $('#password').val();
-    if (username == '' || password == '') {
-        state = false;
-        return;
-    }
-    else{
-        $.ajax({
-            url: 'process.php',
-            type: 'POST',
-            dataType: 'text',
-            data: {
-                'userlogin': 1,
-                'username': username,
-                'password' : password,
-            },
-            success: function (response) {
-                if (response == 'logged') {
-                    console.log("success");
-                    
-                } else {
-                    state = true;
-                    console.log("failed");
-                    
-                }
-            }
-        });
-    }
-};
