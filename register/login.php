@@ -22,7 +22,6 @@ if (count($_POST) > 0) {
 }
 ?>
 <html>
-
 <head>
 	<title>Login Page</title>
 	<meta charset="utf-8">

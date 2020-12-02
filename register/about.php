@@ -6,7 +6,6 @@ session_start();
 <title>User Login</title>
 </head>
 <body>
-
 <?php
 if($_SESSION["name"]) {
 ?>
