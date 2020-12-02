@@ -1,30 +1,37 @@
 <?php
 include('config.php');
 $message = "";
-if (count($_POST) > 0) {
+if (count($_POST) > 0){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-
+	
 	$sql = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
 	$stmt = $db->prepare($sql);
 	$stmt->execute();
-
+	$jwt="";
 	if ($stmt->rowcount() > 0) {
-		session_start();
-		$_SESSION["name"] = $username;
-		if (isset($_SESSION["name"])) {
-			header("Location:about.php");
-		}
-		exit();
-	} else {
-		$message = "Incorrect username or password";
+	  $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
+	  $payload = json_encode(['user_id' => $username]);
+	  $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+      $base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
+	  $signature = hash_hmac('sha256', $base64UrlHeader . "." . $base64UrlPayload, 'abC123!', true);
+	  $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+	  $jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
+	
+	  setcookie('jwt', $jwt);
+	  setcookie('username', $username);
+	  header("Location:about2.php");
 	}
+	else{
+		$message="Incorrect username or password";
+		}
 }
+
 ?>
 <html>
 
 <head>
-	<title>Login Page</title>
+	<title>Login token Page</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -50,7 +57,7 @@ if (count($_POST) > 0) {
 						<input type="password" name="password" class="form-control" id="password" required minlength=4 maxlength=8 placeholder="********"><br />
 					</div>
 					<div class="form-group">
-						<button type="submit" id="loginbtn" class="btn btn-info">Login</button>
+						<button type="submit" id="loginbtn" class="btn btn-info" >Login</button>
 					</div>
 					<div class="form-group">
 						<h6 class="">Not a User?</h2>
@@ -64,4 +71,5 @@ if (count($_POST) > 0) {
 		</div>
 	</div>
 </body>
+
 </html>
