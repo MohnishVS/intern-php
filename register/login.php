@@ -20,6 +20,9 @@ if (count($_POST) > 0) {
 		$message = "Incorrect username or password";
 	}
 }
+else if(!empty($_SESSION['name'])){
+	header("Location:about.php");
+}
 ?>
 <html>
 <head>

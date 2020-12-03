@@ -26,6 +26,9 @@ if (count($_POST) > 0){
 		$message="Incorrect username or password";
 		}
 }
+else if(!empty($_COOKIE['jwt'])){
+	header("Location:about2.php");
+}
 
 ?>
 <html>
