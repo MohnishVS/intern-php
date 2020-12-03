@@ -1,0 +1,14 @@
+{
+    "name": "mohnishvs/intern-php",
+    "description": "Login application using php, js, bootstrap",
+    "type": "project",
+    "require": {
+        "yhoiseth/stringy-inflector": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "MohnishVS",
+            "email": "monishcena619@gmail.com"
+        }
+    ]
+}
