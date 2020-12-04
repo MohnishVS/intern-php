@@ -1,0 +1,35 @@
+{
+  "name": "yhoiseth/stringy-inflector",
+  "description": "A PHP library that helps you capitalize personal names",
+  "keywords": [
+    "personal",
+    "utility",
+    "string",
+    "manipulation",
+    "name",
+    "uppercase",
+    "capitalize"
+  ],
+  "homepage": "https://github.com/yhoiseth/StringyInflector",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yngve Høiseth",
+      "email": "yhoiseth@gmail.com",
+      "homepage": "http://www.yhoiseth.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "danielstjules/stringy": "~2.3"
+  },
+  "support": {
+    "issues": "https://github.com/yhoiseth/StringyInflector/issues",
+    "source": "https://github.com/yhoiseth/StringyInflector"
+  },
+  "autoload": {
+    "psr-4": {
+      "StringyInflector\\": "src/"
+    }
+  }
+}

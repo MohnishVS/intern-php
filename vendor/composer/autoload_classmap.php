@@ -7,4 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'StringyInflector\\StringyInflector' => $vendorDir . '/yhoiseth/stringy-inflector/src/StringyInflector.php',
+    'Stringy\\StaticStringy' => $vendorDir . '/danielstjules/stringy/src/StaticStringy.php',
+    'Stringy\\Stringy' => $vendorDir . '/danielstjules/stringy/src/Stringy.php',
+    'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
 );

@@ -6,13 +6,48 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitbced6d9b3545bb3219e5bd3402b5b7a2
 {
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Stringy\\' => 8,
+            'StringyInflector\\' => 17,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Stringy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
+        ),
+        'StringyInflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yhoiseth/stringy-inflector/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'StringyInflector\\StringyInflector' => __DIR__ . '/..' . '/yhoiseth/stringy-inflector/src/StringyInflector.php',
+        'Stringy\\StaticStringy' => __DIR__ . '/..' . '/danielstjules/stringy/src/StaticStringy.php',
+        'Stringy\\Stringy' => __DIR__ . '/..' . '/danielstjules/stringy/src/Stringy.php',
+        'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbced6d9b3545bb3219e5bd3402b5b7a2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbced6d9b3545bb3219e5bd3402b5b7a2::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitbced6d9b3545bb3219e5bd3402b5b7a2::$classMap;
 
         }, null, ClassLoader::class);

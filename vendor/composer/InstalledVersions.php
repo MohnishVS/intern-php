@@ -19,19 +19,46 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '513a4a9c2cbf34bf838683558b6204ec5c3ebffc',
-    'name' => 'login-app/login-application',
+    'reference' => '3653eb52303cb7a629bb61e6860fd47550b996bc',
+    'name' => 'mohnishvs/intern-php',
   ),
   'versions' => 
   array (
-    'login-app/login-application' => 
+    'danielstjules/stringy' => 
+    array (
+      'pretty_version' => '2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'edbda419cbe4bcc3cb200b7c9811cb6597bf058b',
+    ),
+    'mohnishvs/intern-php' => 
     array (
       'pretty_version' => 'dev-main',
       'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => '513a4a9c2cbf34bf838683558b6204ec5c3ebffc',
+      'reference' => '3653eb52303cb7a629bb61e6860fd47550b996bc',
+    ),
+    'symfony/polyfill-mbstring' => 
+    array (
+      'pretty_version' => 'v1.20.0',
+      'version' => '1.20.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '39d483bdf39be819deabf04ec872eb0b2410b531',
+    ),
+    'yhoiseth/stringy-inflector' => 
+    array (
+      'pretty_version' => 'v1.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cb7894e17ff109541551bdedcb0dd8eb04541230',
     ),
   ),
 );
